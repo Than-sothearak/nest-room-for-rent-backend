@@ -29,6 +29,10 @@
 
 ```bash
 $ npm install
+$ npx prisma
+$ npx prisma init
+$ npm i --save @nestjs/config
+$ npx prisma db push
 ```
 
 ## Compile and run the project
