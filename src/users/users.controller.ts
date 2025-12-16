@@ -16,10 +16,10 @@ import { UpdateUserDto } from './dto/update-user.dto';
 @Controller('users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
-  // @Get() //GET method to fetch all users /users
-  // findAll() {
-  //   return this.userService.findAll();
-  // }
+  @Get() //GET method to fetch all users /users
+  findAll(@Query('query') query?: string, @Query('page') page: number = 1) {
+    return this.userService.findAll(query, Number(page));
+  }
 
   // @Get(':id') //GET method to fetch a user by id /users/:id
   // findOne(@Param('id') id: string) {

@@ -20,62 +20,194 @@ export type UserModel = runtime.Types.Result.DefaultSelection<Prisma.$UserPayloa
 
 export type AggregateUser = {
   _count: UserCountAggregateOutputType | null
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
 }
 
+export type UserAvgAggregateOutputType = {
+  loginCount: number | null
+}
+
+export type UserSumAggregateOutputType = {
+  loginCount: number | null
+}
+
 export type UserMinAggregateOutputType = {
   id: string | null
-  name: string | null
+  username: string | null
   email: string | null
+  phone: string | null
+  dateOfBirth: Date | null
+  address: string | null
+  gender: string | null
+  note: string | null
+  status: string | null
+  imageUrl: string | null
+  telegramChatId: string | null
+  password: string | null
   isAdmin: boolean | null
+  loginCount: number | null
+  lastLogin: Date | null
+  lastIP: string | null
+  location: string | null
+  lastSeen: Date | null
+  lastUserAgent: string | null
+  deviceType: string | null
+  deviceModel: string | null
+  osName: string | null
+  browserName: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
   id: string | null
-  name: string | null
+  username: string | null
   email: string | null
+  phone: string | null
+  dateOfBirth: Date | null
+  address: string | null
+  gender: string | null
+  note: string | null
+  status: string | null
+  imageUrl: string | null
+  telegramChatId: string | null
+  password: string | null
   isAdmin: boolean | null
+  loginCount: number | null
+  lastLogin: Date | null
+  lastIP: string | null
+  location: string | null
+  lastSeen: Date | null
+  lastUserAgent: string | null
+  deviceType: string | null
+  deviceModel: string | null
+  osName: string | null
+  browserName: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type UserCountAggregateOutputType = {
   id: number
-  name: number
+  username: number
   email: number
+  phone: number
+  dateOfBirth: number
+  address: number
+  gender: number
+  note: number
+  status: number
+  imageUrl: number
+  telegramChatId: number
+  password: number
   isAdmin: number
+  loginCount: number
+  lastLogin: number
+  lastIP: number
+  location: number
+  lastSeen: number
+  lastUserAgent: number
+  deviceType: number
+  deviceModel: number
+  osName: number
+  browserName: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
 
+export type UserAvgAggregateInputType = {
+  loginCount?: true
+}
+
+export type UserSumAggregateInputType = {
+  loginCount?: true
+}
+
 export type UserMinAggregateInputType = {
   id?: true
-  name?: true
+  username?: true
   email?: true
+  phone?: true
+  dateOfBirth?: true
+  address?: true
+  gender?: true
+  note?: true
+  status?: true
+  imageUrl?: true
+  telegramChatId?: true
+  password?: true
   isAdmin?: true
+  loginCount?: true
+  lastLogin?: true
+  lastIP?: true
+  location?: true
+  lastSeen?: true
+  lastUserAgent?: true
+  deviceType?: true
+  deviceModel?: true
+  osName?: true
+  browserName?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type UserMaxAggregateInputType = {
   id?: true
-  name?: true
+  username?: true
   email?: true
+  phone?: true
+  dateOfBirth?: true
+  address?: true
+  gender?: true
+  note?: true
+  status?: true
+  imageUrl?: true
+  telegramChatId?: true
+  password?: true
   isAdmin?: true
+  loginCount?: true
+  lastLogin?: true
+  lastIP?: true
+  location?: true
+  lastSeen?: true
+  lastUserAgent?: true
+  deviceType?: true
+  deviceModel?: true
+  osName?: true
+  browserName?: true
   createdAt?: true
   updatedAt?: true
 }
 
 export type UserCountAggregateInputType = {
   id?: true
-  name?: true
+  username?: true
   email?: true
+  phone?: true
+  dateOfBirth?: true
+  address?: true
+  gender?: true
+  note?: true
+  status?: true
+  imageUrl?: true
+  telegramChatId?: true
+  password?: true
   isAdmin?: true
+  loginCount?: true
+  lastLogin?: true
+  lastIP?: true
+  location?: true
+  lastSeen?: true
+  lastUserAgent?: true
+  deviceType?: true
+  deviceModel?: true
+  osName?: true
+  browserName?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -119,6 +251,18 @@ export type UserAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: UserAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: UserSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: UserMinAggregateInputType
@@ -149,18 +293,41 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: UserCountAggregateInputType | true
+  _avg?: UserAvgAggregateInputType
+  _sum?: UserSumAggregateInputType
   _min?: UserMinAggregateInputType
   _max?: UserMaxAggregateInputType
 }
 
 export type UserGroupByOutputType = {
   id: string
-  name: string
+  username: string
   email: string
+  phone: string | null
+  dateOfBirth: Date | null
+  address: string
+  gender: string
+  note: string | null
+  status: string
+  imageUrl: string | null
+  telegramChatId: string | null
+  password: string
   isAdmin: boolean
+  loginCount: number
+  lastLogin: Date | null
+  lastIP: string | null
+  location: string | null
+  lastSeen: Date | null
+  lastUserAgent: string | null
+  deviceType: string
+  deviceModel: string | null
+  osName: string | null
+  browserName: string | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
+  _avg: UserAvgAggregateOutputType | null
+  _sum: UserSumAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
 }
@@ -185,44 +352,122 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.StringFilter<"User"> | string
-  name?: Prisma.StringFilter<"User"> | string
+  username?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
+  phone?: Prisma.StringNullableFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  address?: Prisma.StringFilter<"User"> | string
+  gender?: Prisma.StringFilter<"User"> | string
+  note?: Prisma.StringNullableFilter<"User"> | string | null
+  status?: Prisma.StringFilter<"User"> | string
+  imageUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  telegramChatId?: Prisma.StringNullableFilter<"User"> | string | null
+  password?: Prisma.StringFilter<"User"> | string
   isAdmin?: Prisma.BoolFilter<"User"> | boolean
+  loginCount?: Prisma.IntFilter<"User"> | number
+  lastLogin?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  lastIP?: Prisma.StringNullableFilter<"User"> | string | null
+  location?: Prisma.StringNullableFilter<"User"> | string | null
+  lastSeen?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  lastUserAgent?: Prisma.StringNullableFilter<"User"> | string | null
+  deviceType?: Prisma.StringFilter<"User"> | string
+  deviceModel?: Prisma.StringNullableFilter<"User"> | string | null
+  osName?: Prisma.StringNullableFilter<"User"> | string | null
+  browserName?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
 }
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  loginCount?: Prisma.SortOrder
+  lastLogin?: Prisma.SortOrder
+  lastIP?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  lastSeen?: Prisma.SortOrder
+  lastUserAgent?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  deviceModel?: Prisma.SortOrder
+  osName?: Prisma.SortOrder
+  browserName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  name?: string
+  username?: string
   email?: string
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
+  phone?: Prisma.StringNullableFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  address?: Prisma.StringFilter<"User"> | string
+  gender?: Prisma.StringFilter<"User"> | string
+  note?: Prisma.StringNullableFilter<"User"> | string | null
+  status?: Prisma.StringFilter<"User"> | string
+  imageUrl?: Prisma.StringNullableFilter<"User"> | string | null
+  telegramChatId?: Prisma.StringNullableFilter<"User"> | string | null
+  password?: Prisma.StringFilter<"User"> | string
   isAdmin?: Prisma.BoolFilter<"User"> | boolean
+  loginCount?: Prisma.IntFilter<"User"> | number
+  lastLogin?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  lastIP?: Prisma.StringNullableFilter<"User"> | string | null
+  location?: Prisma.StringNullableFilter<"User"> | string | null
+  lastSeen?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  lastUserAgent?: Prisma.StringNullableFilter<"User"> | string | null
+  deviceType?: Prisma.StringFilter<"User"> | string
+  deviceModel?: Prisma.StringNullableFilter<"User"> | string | null
+  osName?: Prisma.StringNullableFilter<"User"> | string | null
+  browserName?: Prisma.StringNullableFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
-}, "id" | "name" | "email">
+}, "id" | "username" | "email">
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  loginCount?: Prisma.SortOrder
+  lastLogin?: Prisma.SortOrder
+  lastIP?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  lastSeen?: Prisma.SortOrder
+  lastUserAgent?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  deviceModel?: Prisma.SortOrder
+  osName?: Prisma.SortOrder
+  browserName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
+  _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
+  _sum?: Prisma.UserSumOrderByAggregateInput
 }
 
 export type UserScalarWhereWithAggregatesInput = {
@@ -230,105 +475,340 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"User"> | string
-  name?: Prisma.StringWithAggregatesFilter<"User"> | string
+  username?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
+  phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  address?: Prisma.StringWithAggregatesFilter<"User"> | string
+  gender?: Prisma.StringWithAggregatesFilter<"User"> | string
+  note?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  status?: Prisma.StringWithAggregatesFilter<"User"> | string
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  telegramChatId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  password?: Prisma.StringWithAggregatesFilter<"User"> | string
   isAdmin?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  loginCount?: Prisma.IntWithAggregatesFilter<"User"> | number
+  lastLogin?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  lastIP?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  location?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  lastSeen?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  lastUserAgent?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  deviceType?: Prisma.StringWithAggregatesFilter<"User"> | string
+  deviceModel?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  osName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  browserName?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
 
 export type UserCreateInput = {
   id?: string
-  name: string
+  username: string
   email: string
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  address: string
+  gender: string
+  note?: string | null
+  status?: string
+  imageUrl?: string | null
+  telegramChatId?: string | null
+  password: string
   isAdmin?: boolean
+  loginCount?: number
+  lastLogin?: Date | string | null
+  lastIP?: string | null
+  location?: string | null
+  lastSeen?: Date | string | null
+  lastUserAgent?: string | null
+  deviceType?: string
+  deviceModel?: string | null
+  osName?: string | null
+  browserName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type UserUncheckedCreateInput = {
   id?: string
-  name: string
+  username: string
   email: string
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  address: string
+  gender: string
+  note?: string | null
+  status?: string
+  imageUrl?: string | null
+  telegramChatId?: string | null
+  password: string
   isAdmin?: boolean
+  loginCount?: number
+  lastLogin?: Date | string | null
+  lastIP?: string | null
+  location?: string | null
+  lastSeen?: Date | string | null
+  lastUserAgent?: string | null
+  deviceType?: string
+  deviceModel?: string | null
+  osName?: string | null
+  browserName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type UserUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastSeen?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastUserAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deviceType?: Prisma.StringFieldUpdateOperationsInput | string
+  deviceModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  osName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  browserName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastSeen?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastUserAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deviceType?: Prisma.StringFieldUpdateOperationsInput | string
+  deviceModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  osName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  browserName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCreateManyInput = {
   id?: string
-  name: string
+  username: string
   email: string
+  phone?: string | null
+  dateOfBirth?: Date | string | null
+  address: string
+  gender: string
+  note?: string | null
+  status?: string
+  imageUrl?: string | null
+  telegramChatId?: string | null
+  password: string
   isAdmin?: boolean
+  loginCount?: number
+  lastLogin?: Date | string | null
+  lastIP?: string | null
+  location?: string | null
+  lastSeen?: Date | string | null
+  lastUserAgent?: string | null
+  deviceType?: string
+  deviceModel?: string | null
+  osName?: string | null
+  browserName?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type UserUpdateManyMutationInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastSeen?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastUserAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deviceType?: Prisma.StringFieldUpdateOperationsInput | string
+  deviceModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  osName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  browserName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
+  username?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  gender?: Prisma.StringFieldUpdateOperationsInput | string
+  note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  loginCount?: Prisma.IntFieldUpdateOperationsInput | number
+  lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  lastSeen?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  lastUserAgent?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  deviceType?: Prisma.StringFieldUpdateOperationsInput | string
+  deviceModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  osName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  browserName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  loginCount?: Prisma.SortOrder
+  lastLogin?: Prisma.SortOrder
+  lastIP?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  lastSeen?: Prisma.SortOrder
+  lastUserAgent?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  deviceModel?: Prisma.SortOrder
+  osName?: Prisma.SortOrder
+  browserName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+export type UserAvgOrderByAggregateInput = {
+  loginCount?: Prisma.SortOrder
+}
+
 export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  loginCount?: Prisma.SortOrder
+  lastLogin?: Prisma.SortOrder
+  lastIP?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  lastSeen?: Prisma.SortOrder
+  lastUserAgent?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  deviceModel?: Prisma.SortOrder
+  osName?: Prisma.SortOrder
+  browserName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  username?: Prisma.SortOrder
   email?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  address?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  note?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
+  telegramChatId?: Prisma.SortOrder
+  password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  loginCount?: Prisma.SortOrder
+  lastLogin?: Prisma.SortOrder
+  lastIP?: Prisma.SortOrder
+  location?: Prisma.SortOrder
+  lastSeen?: Prisma.SortOrder
+  lastUserAgent?: Prisma.SortOrder
+  deviceType?: Prisma.SortOrder
+  deviceModel?: Prisma.SortOrder
+  osName?: Prisma.SortOrder
+  browserName?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type UserSumOrderByAggregateInput = {
+  loginCount?: Prisma.SortOrder
 }
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+  unset?: boolean
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+  unset?: boolean
+}
+
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -339,9 +819,28 @@ export type DateTimeFieldUpdateOperationsInput = {
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
+  username?: boolean
   email?: boolean
+  phone?: boolean
+  dateOfBirth?: boolean
+  address?: boolean
+  gender?: boolean
+  note?: boolean
+  status?: boolean
+  imageUrl?: boolean
+  telegramChatId?: boolean
+  password?: boolean
   isAdmin?: boolean
+  loginCount?: boolean
+  lastLogin?: boolean
+  lastIP?: boolean
+  location?: boolean
+  lastSeen?: boolean
+  lastUserAgent?: boolean
+  deviceType?: boolean
+  deviceModel?: boolean
+  osName?: boolean
+  browserName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["user"]>
@@ -350,23 +849,61 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
 
 export type UserSelectScalar = {
   id?: boolean
-  name?: boolean
+  username?: boolean
   email?: boolean
+  phone?: boolean
+  dateOfBirth?: boolean
+  address?: boolean
+  gender?: boolean
+  note?: boolean
+  status?: boolean
+  imageUrl?: boolean
+  telegramChatId?: boolean
+  password?: boolean
   isAdmin?: boolean
+  loginCount?: boolean
+  lastLogin?: boolean
+  lastIP?: boolean
+  location?: boolean
+  lastSeen?: boolean
+  lastUserAgent?: boolean
+  deviceType?: boolean
+  deviceModel?: boolean
+  osName?: boolean
+  browserName?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "isAdmin" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "phone" | "dateOfBirth" | "address" | "gender" | "note" | "status" | "imageUrl" | "telegramChatId" | "password" | "isAdmin" | "loginCount" | "lastLogin" | "lastIP" | "location" | "lastSeen" | "lastUserAgent" | "deviceType" | "deviceModel" | "osName" | "browserName" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    name: string
+    username: string
     email: string
+    phone: string | null
+    dateOfBirth: Date | null
+    address: string
+    gender: string
+    note: string | null
+    status: string
+    imageUrl: string | null
+    telegramChatId: string | null
+    password: string
     isAdmin: boolean
+    loginCount: number
+    lastLogin: Date | null
+    lastIP: string | null
+    location: string | null
+    lastSeen: Date | null
+    lastUserAgent: string | null
+    deviceType: string
+    deviceModel: string | null
+    osName: string | null
+    browserName: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -762,9 +1299,28 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<"User", 'String'>
-  readonly name: Prisma.FieldRef<"User", 'String'>
+  readonly username: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
+  readonly phone: Prisma.FieldRef<"User", 'String'>
+  readonly dateOfBirth: Prisma.FieldRef<"User", 'DateTime'>
+  readonly address: Prisma.FieldRef<"User", 'String'>
+  readonly gender: Prisma.FieldRef<"User", 'String'>
+  readonly note: Prisma.FieldRef<"User", 'String'>
+  readonly status: Prisma.FieldRef<"User", 'String'>
+  readonly imageUrl: Prisma.FieldRef<"User", 'String'>
+  readonly telegramChatId: Prisma.FieldRef<"User", 'String'>
+  readonly password: Prisma.FieldRef<"User", 'String'>
   readonly isAdmin: Prisma.FieldRef<"User", 'Boolean'>
+  readonly loginCount: Prisma.FieldRef<"User", 'Int'>
+  readonly lastLogin: Prisma.FieldRef<"User", 'DateTime'>
+  readonly lastIP: Prisma.FieldRef<"User", 'String'>
+  readonly location: Prisma.FieldRef<"User", 'String'>
+  readonly lastSeen: Prisma.FieldRef<"User", 'DateTime'>
+  readonly lastUserAgent: Prisma.FieldRef<"User", 'String'>
+  readonly deviceType: Prisma.FieldRef<"User", 'String'>
+  readonly deviceModel: Prisma.FieldRef<"User", 'String'>
+  readonly osName: Prisma.FieldRef<"User", 'String'>
+  readonly browserName: Prisma.FieldRef<"User", 'String'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }

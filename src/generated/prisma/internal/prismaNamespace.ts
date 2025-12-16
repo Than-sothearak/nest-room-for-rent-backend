@@ -503,9 +503,28 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
 
 export const UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  username: 'username',
   email: 'email',
+  phone: 'phone',
+  dateOfBirth: 'dateOfBirth',
+  address: 'address',
+  gender: 'gender',
+  note: 'note',
+  status: 'status',
+  imageUrl: 'imageUrl',
+  telegramChatId: 'telegramChatId',
+  password: 'password',
   isAdmin: 'isAdmin',
+  loginCount: 'loginCount',
+  lastLogin: 'lastLogin',
+  lastIP: 'lastIP',
+  location: 'location',
+  lastSeen: 'lastSeen',
+  lastUserAgent: 'lastUserAgent',
+  deviceType: 'deviceType',
+  deviceModel: 'deviceModel',
+  osName: 'osName',
+  browserName: 'browserName',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -550,13 +569,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Boolean'
- */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -571,6 +583,13 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -581,6 +600,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**

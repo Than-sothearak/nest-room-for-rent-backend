@@ -8,8 +8,8 @@ import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
-    // 💡 Add this FIRST to ensure .env variables are loaded globally
-    // before any other module (like Prisma) tries to access them.
+    // // 💡 Add this FIRST to ensure .env variables are loaded globally
+    // // before any other module (like Prisma) tries to access them.
     ConfigModule.forRoot({
       isGlobal: true,
     }),
