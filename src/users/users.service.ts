@@ -5,14 +5,9 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
-  private readonly ITEM_PER_PAGE = 10;
   constructor(private prisma: PrismaService) {}
 
-  async findAll(
-    query?: string,
-    page: number = 1,
-    ITEM_PER_PAGE: number = this.ITEM_PER_PAGE,
-  ) {
+  async findAll(query?: string, page: number = 1, limit: number = 10) {
     const where = query
       ? {
           OR: [
@@ -25,14 +20,24 @@ export class UsersService {
     const [users, count] = await Promise.all([
       this.prisma.user.findMany({
         where,
-        skip: (page - 1) * ITEM_PER_PAGE,
-        take: ITEM_PER_PAGE,
+        skip: (page - 1) * limit,
+        take: limit,
         orderBy: { createdAt: 'desc' },
       }),
       this.prisma.user.count(), // ✅ await executed
     ]);
 
-    return { users, count, page, ITEM_PER_PAGE };
+    const totalPages = Math.ceil(count / limit);
+    return {
+      data: users,
+      meta: {
+        totalItems: count,
+        itemCount: users.length,
+        itemsPerPage: limit,
+        totalPages: totalPages,
+        currentPage: page,
+      },
+    };
   }
 
   async findOne(id: string) {

@@ -104,6 +104,7 @@ export type UserCountAggregateOutputType = {
   telegramChatId: number
   password: number
   isAdmin: number
+  roles: number
   loginCount: number
   lastLogin: number
   lastIP: number
@@ -198,6 +199,7 @@ export type UserCountAggregateInputType = {
   telegramChatId?: true
   password?: true
   isAdmin?: true
+  roles?: true
   loginCount?: true
   lastLogin?: true
   lastIP?: true
@@ -305,7 +307,7 @@ export type UserGroupByOutputType = {
   email: string
   phone: string | null
   dateOfBirth: Date | null
-  address: string
+  address: string | null
   gender: string
   note: string | null
   status: string
@@ -313,6 +315,7 @@ export type UserGroupByOutputType = {
   telegramChatId: string | null
   password: string
   isAdmin: boolean
+  roles: string[]
   loginCount: number
   lastLogin: Date | null
   lastIP: string | null
@@ -356,7 +359,7 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  address?: Prisma.StringFilter<"User"> | string
+  address?: Prisma.StringNullableFilter<"User"> | string | null
   gender?: Prisma.StringFilter<"User"> | string
   note?: Prisma.StringNullableFilter<"User"> | string | null
   status?: Prisma.StringFilter<"User"> | string
@@ -364,6 +367,7 @@ export type UserWhereInput = {
   telegramChatId?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringFilter<"User"> | string
   isAdmin?: Prisma.BoolFilter<"User"> | boolean
+  roles?: Prisma.StringNullableListFilter<"User">
   loginCount?: Prisma.IntFilter<"User"> | number
   lastLogin?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastIP?: Prisma.StringNullableFilter<"User"> | string | null
@@ -392,6 +396,7 @@ export type UserOrderByWithRelationInput = {
   telegramChatId?: Prisma.SortOrder
   password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  roles?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLogin?: Prisma.SortOrder
   lastIP?: Prisma.SortOrder
@@ -415,7 +420,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   phone?: Prisma.StringNullableFilter<"User"> | string | null
   dateOfBirth?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  address?: Prisma.StringFilter<"User"> | string
+  address?: Prisma.StringNullableFilter<"User"> | string | null
   gender?: Prisma.StringFilter<"User"> | string
   note?: Prisma.StringNullableFilter<"User"> | string | null
   status?: Prisma.StringFilter<"User"> | string
@@ -423,6 +428,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   telegramChatId?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringFilter<"User"> | string
   isAdmin?: Prisma.BoolFilter<"User"> | boolean
+  roles?: Prisma.StringNullableListFilter<"User">
   loginCount?: Prisma.IntFilter<"User"> | number
   lastLogin?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   lastIP?: Prisma.StringNullableFilter<"User"> | string | null
@@ -451,6 +457,7 @@ export type UserOrderByWithAggregationInput = {
   telegramChatId?: Prisma.SortOrder
   password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  roles?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLogin?: Prisma.SortOrder
   lastIP?: Prisma.SortOrder
@@ -479,7 +486,7 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  address?: Prisma.StringWithAggregatesFilter<"User"> | string
+  address?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   gender?: Prisma.StringWithAggregatesFilter<"User"> | string
   note?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   status?: Prisma.StringWithAggregatesFilter<"User"> | string
@@ -487,6 +494,7 @@ export type UserScalarWhereWithAggregatesInput = {
   telegramChatId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   isAdmin?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
+  roles?: Prisma.StringNullableListFilter<"User">
   loginCount?: Prisma.IntWithAggregatesFilter<"User"> | number
   lastLogin?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   lastIP?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -507,7 +515,7 @@ export type UserCreateInput = {
   email: string
   phone?: string | null
   dateOfBirth?: Date | string | null
-  address: string
+  address?: string | null
   gender: string
   note?: string | null
   status?: string
@@ -515,6 +523,7 @@ export type UserCreateInput = {
   telegramChatId?: string | null
   password: string
   isAdmin?: boolean
+  roles?: Prisma.UserCreaterolesInput | string[]
   loginCount?: number
   lastLogin?: Date | string | null
   lastIP?: string | null
@@ -535,7 +544,7 @@ export type UserUncheckedCreateInput = {
   email: string
   phone?: string | null
   dateOfBirth?: Date | string | null
-  address: string
+  address?: string | null
   gender: string
   note?: string | null
   status?: string
@@ -543,6 +552,7 @@ export type UserUncheckedCreateInput = {
   telegramChatId?: string | null
   password: string
   isAdmin?: boolean
+  roles?: Prisma.UserCreaterolesInput | string[]
   loginCount?: number
   lastLogin?: Date | string | null
   lastIP?: string | null
@@ -562,7 +572,7 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  address?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -570,6 +580,7 @@ export type UserUpdateInput = {
   telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  roles?: Prisma.UserUpdaterolesInput | string[]
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -589,7 +600,7 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  address?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -597,6 +608,7 @@ export type UserUncheckedUpdateInput = {
   telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  roles?: Prisma.UserUpdaterolesInput | string[]
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -617,7 +629,7 @@ export type UserCreateManyInput = {
   email: string
   phone?: string | null
   dateOfBirth?: Date | string | null
-  address: string
+  address?: string | null
   gender: string
   note?: string | null
   status?: string
@@ -625,6 +637,7 @@ export type UserCreateManyInput = {
   telegramChatId?: string | null
   password: string
   isAdmin?: boolean
+  roles?: Prisma.UserCreaterolesInput | string[]
   loginCount?: number
   lastLogin?: Date | string | null
   lastIP?: string | null
@@ -644,7 +657,7 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  address?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -652,6 +665,7 @@ export type UserUpdateManyMutationInput = {
   telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  roles?: Prisma.UserUpdaterolesInput | string[]
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -671,7 +685,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  address?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -679,6 +693,7 @@ export type UserUncheckedUpdateManyInput = {
   telegramChatId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  roles?: Prisma.UserUpdaterolesInput | string[]
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLogin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   lastIP?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -691,6 +706,14 @@ export type UserUncheckedUpdateManyInput = {
   browserName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -707,6 +730,7 @@ export type UserCountOrderByAggregateInput = {
   telegramChatId?: Prisma.SortOrder
   password?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
+  roles?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLogin?: Prisma.SortOrder
   lastIP?: Prisma.SortOrder
@@ -785,6 +809,10 @@ export type UserSumOrderByAggregateInput = {
   loginCount?: Prisma.SortOrder
 }
 
+export type UserCreaterolesInput = {
+  set: string[]
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -801,6 +829,11 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type UserUpdaterolesInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type IntFieldUpdateOperationsInput = {
@@ -831,6 +864,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   telegramChatId?: boolean
   password?: boolean
   isAdmin?: boolean
+  roles?: boolean
   loginCount?: boolean
   lastLogin?: boolean
   lastIP?: boolean
@@ -861,6 +895,7 @@ export type UserSelectScalar = {
   telegramChatId?: boolean
   password?: boolean
   isAdmin?: boolean
+  roles?: boolean
   loginCount?: boolean
   lastLogin?: boolean
   lastIP?: boolean
@@ -875,7 +910,7 @@ export type UserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "phone" | "dateOfBirth" | "address" | "gender" | "note" | "status" | "imageUrl" | "telegramChatId" | "password" | "isAdmin" | "loginCount" | "lastLogin" | "lastIP" | "location" | "lastSeen" | "lastUserAgent" | "deviceType" | "deviceModel" | "osName" | "browserName" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "username" | "email" | "phone" | "dateOfBirth" | "address" | "gender" | "note" | "status" | "imageUrl" | "telegramChatId" | "password" | "isAdmin" | "roles" | "loginCount" | "lastLogin" | "lastIP" | "location" | "lastSeen" | "lastUserAgent" | "deviceType" | "deviceModel" | "osName" | "browserName" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
@@ -886,7 +921,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     phone: string | null
     dateOfBirth: Date | null
-    address: string
+    address: string | null
     gender: string
     note: string | null
     status: string
@@ -894,6 +929,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     telegramChatId: string | null
     password: string
     isAdmin: boolean
+    roles: string[]
     loginCount: number
     lastLogin: Date | null
     lastIP: string | null
@@ -1311,6 +1347,7 @@ export interface UserFieldRefs {
   readonly telegramChatId: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly isAdmin: Prisma.FieldRef<"User", 'Boolean'>
+  readonly roles: Prisma.FieldRef<"User", 'String[]'>
   readonly loginCount: Prisma.FieldRef<"User", 'Int'>
   readonly lastLogin: Prisma.FieldRef<"User", 'DateTime'>
   readonly lastIP: Prisma.FieldRef<"User", 'String'>

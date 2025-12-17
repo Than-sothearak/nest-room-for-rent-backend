@@ -8,7 +8,19 @@ import {
   Min,
   MaxLength,
   IsNotEmpty,
+  IsEnum,
 } from 'class-validator';
+
+export enum Gender {
+  MALE = 'male',
+  FEMALE = 'female',
+}
+
+export enum Roles {
+  USER = 'user',
+  ADMIN = 'admin',
+  MODERATOR = 'moderator',
+}
 
 export class CreateUserDto {
   @IsString()
@@ -29,13 +41,13 @@ export class CreateUserDto {
   @IsDateString()
   dateOfBirth?: Date;
 
+  @IsOptional()
   @IsString()
   @MaxLength(100)
   address: string;
 
-  @IsString()
-  @MaxLength(10)
-  gender: string;
+  @IsEnum(Gender, { message: 'gender must be either male or female' })
+  gender: Gender;
 
   @IsOptional()
   @IsString()
@@ -61,6 +73,9 @@ export class CreateUserDto {
   @IsOptional()
   @IsBoolean()
   isAdmin?: boolean;
+
+  @IsEnum(Roles, { message: 'roles must be one of user, admin, or moderator' })
+  roles: string[];
 
   @IsOptional()
   @IsInt()

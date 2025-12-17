@@ -515,6 +515,7 @@ export const UserScalarFieldEnum = {
   telegramChatId: 'telegramChatId',
   password: 'password',
   isAdmin: 'isAdmin',
+  roles: 'roles',
   loginCount: 'loginCount',
   lastLogin: 'lastLogin',
   lastIP: 'lastIP',
