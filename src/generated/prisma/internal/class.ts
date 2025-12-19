@@ -23,7 +23,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "D:\\web-development\\room-for-rent\\nest-room-for-rent-backend\\src\\generated\\prisma",
+      "value": "/Users/itcstudio/Desktop/web-development/room-for-rent/nest-room-for-rent-backend/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -33,12 +33,12 @@ const config: runtime.GetPrismaClientConfig = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\web-development\\room-for-rent\\nest-room-for-rent-backend\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/itcstudio/Desktop/web-development/room-for-rent/nest-room-for-rent-backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../../prisma",

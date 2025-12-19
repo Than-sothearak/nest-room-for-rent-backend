@@ -1,11 +1,10 @@
 import {
-  forwardRef,
   HttpException,
   HttpStatus,
-  Inject,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -13,6 +12,12 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class UsersService {
   constructor(private prisma: PrismaService) {}
+
+  async findByEmail(email: string) {
+    return await this.prisma.user.findUnique({
+      where: { email },
+    });
+  }
 
   async findAll(query?: string, page: number = 1, limit: number = 10) {
     const where = query
@@ -77,11 +82,17 @@ export class UsersService {
         HttpStatus.CONFLICT,
       );
     }
+
+    const hashedPassword: string = await bcrypt.hash(
+      createUserDto.password,
+      10,
+    );
+
     try {
       const createdUser = await this.prisma.user.create({
         data: {
           ...createUserDto,
-          password: createUserDto.password,
+          password: hashedPassword,
         },
       });
       return {
