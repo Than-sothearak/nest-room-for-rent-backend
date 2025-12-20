@@ -35,8 +35,7 @@ export class AuthService {
 
     return {
       accessToken,
-      roles: user.roles, // explicitly return role
-      email: user.email, // optional
+      user
     };
   }
 

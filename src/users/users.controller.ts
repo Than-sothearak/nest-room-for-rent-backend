@@ -7,9 +7,11 @@ import {
   Patch,
   Post,
   Query,
+  Res,
   UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
+import type { Response } from 'express';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -17,11 +19,14 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly userService: UsersService) {}
+  constructor(
+    private readonly userService: UsersService,
+  ) {}
 
   @Get() //GET method to fetch all users /users
   @UseGuards(JwtAuthGuard)
-  findAll(
+  async findAll(
+    @Res({ passthrough: true }) response: Response,
     @Query('query') query?: string,
     @Query('page') page: number = 1,
     @Query('limit') limit: number = 10, //
